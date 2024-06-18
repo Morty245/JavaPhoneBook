@@ -56,3 +56,34 @@ public class PhoneBook {
         }
         waitEnter();
     }
+    
+    private static void editItem() {
+        hr();
+        System.out.print("РЕДАКТИРОВАНИЕ ЗАПИСИ\n\n");
+        System.out.print("Введите имя для редактирования: ");
+        String name = scanner.nextLine();
+        if (phoneBook.containsKey(name)) {
+            System.out.print("Введите новый номер телефона: ");
+            String newPhoneNumber = scanner.nextLine();
+            phoneBook.get(name).add(newPhoneNumber);
+            System.out.println("Запись отредактирована: " + name + ": " + phoneBook.get(name));
+        } else {
+            System.out.println("Запись с таким именем не найдена.");
+        }
+        waitEnter();
+    }
+
+    private static void waitEnter() {
+        System.out.print("\nНажмите ENTER для продолжения...");
+        scanner.nextLine();
+        clearConsole();
+    }
+    private static void hr() {
+        System.out.println("\n--------------------------------");
+    }
+    public static void clearConsole() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println();
+        }
+    }
+}
